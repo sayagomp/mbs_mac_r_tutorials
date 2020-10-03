@@ -1,0 +1,147 @@
+---
+title: "MAC R Tutorial 1 Exercise"
+output: html_notebook
+---
+
+### Part A: Basic Math ###
+
+1) First, have a look at some other math operations in R. Calculate the following problems (and look at the help documentation for the necessary arguments).
+
+```{r}
+sqrt(9)
+exp(2)
+log(100)
+abs(-2)
+round(3.21)
+```
+
+2) Now, calculate using named variables. Assume you are the product manager of a new suitcase. Try to assign meaningful names to the relevant variables and calculate using those variables, rather than just typing in the numbers as you would in a calculator.
+
+a. Production of a suitcase costs 25€ while the product is currently sold for 70€. This year 463 suitcases were sold in total. What is this year’s total revenue? How high is the profit?
+
+```{r}
+productionCost <- 25
+salesPrice <- 70
+totalItemsSold <- 463
+(totalRevenue <- salesPrice*totalItemsSold)
+(profit <- totalItemsSold*(salesPrice-productionCost))
+```
+
+b. Now, to predict next year’s revenue assume that production costs will increase by 5€ per suitcase, since you plan to use higher quality (and more expensive) wheels for your product. The price of suitcases is expected to stay constant, but sales are forecasted to reach 500. What revenue is predicted for next year?
+
+```{r}
+productionCost <- 30
+totalItemsSold <- 500
+(totalRevenue <- salesPrice*totalItemsSold)
+```
+
+### Part B: Different Data Types & Vectors ###
+
+1) Generate vectors containing the following number sequences using rep() and seq().
+```{r}
+#a
+rep(3:6, times=4)
+#b
+rep(3:5, each=3)
+#c
+rep(1:5, times=1:5)
+#d
+seq(from=0, to=0.3, by=0.1)
+#e
+seq(from=-0.15, to=0.6, by=0.15)
+#f
+seq(from=-2, to=2, length.out=50)
+```
+
+2) Now, familiarize yourself with the different vector types in R.
+
+a. Create a vector containing the possible academic grades (1.0, 2.0, 3.0, 4.0,
+5.0), give the vector a meaningful name and check what type it is.
+```{r}
+gradesNumerical <- c(1.0, 2.0, 3.0, 4.0, 5.0)
+typeof(gradesNumerical)
+```
+
+b. Create a vector containing the possible grades (A, B, C, D, F), give the vector a meaningful name and check what type it is.
+```{r}
+gradesLetter <- c('A','B','C','D','F')
+typeof(gradesLetter)
+```
+
+c. Can the vector of grades from a. be turned into a character or logical vector?
+```{r}
+as.character(gradesNumerical)
+as.logical(gradesNumerical)
+```
+
+
+What are the rules for turning a numeric vector into a logical one? 
+```
+0 will be FALSE, anything else will be TRUE.
+```
+
+What happens if you turn the vector from b. into a numeric or logical vector?
+
+```{r}
+as.numeric(gradesLetter)
+as.logical(gradesLetter)
+```
+
+d. Create a vector containing the elements (1, TRUE, 5). Then create a vector containing (1, TRUE, 5, “yes”). What happens and do you understand why?
+
+```{r}
+c(1, T, 5)
+c(1, T, 5, "yes")
+```
+```
+Vector elements must all be of the same type. Otherwise they are coerced to the most general type. Here, character is more general than numeric, which is more general than logical.
+```
+
+3) Create a vector containing the prices of a company’s five products in €: (3.59, 4.19, 8.99, 5.09, 2.79). Return only the prices of the last 3 products. Now, return only the prices of the first and last product.
+```{r}
+prices <- c(3.59, 4.19, 8.99, 5.09, 2.79)
+prices[3:5]
+prices[c(1,5)]
+```
+
+4) Create a vector containing the costs of the same company’s products in €: (2, 1, 5, 2.5).
+```{r}
+costs <- c(2, 1, 5, 2.5)
+```
+
+a. To calculate each product’s revenue, subtract the cost vector from the sales price vector you just created. How is the profit of the fifth product calculated and what is the implicit assumption made?
+```{r}
+(profit <- prices-costs)
+```
+```
+The profit of the 5th product is calculated by prices[5]-costs[1], i.e. the shorter vector is repeated. The assumption is that the costs should "loop" such that the price of the 5th is the price of the 1st. 
+```
+
+b. Following a new production process, the company’s costs are doubled, while the prices are tripled. Create new vectors with these new numbers (in the easiest way possible) and recalculate each product’s profit.
+```{r}
+(costsNew <- costs * 3)
+(pricesNew <- prices *3)
+(profitNew <- prices-costs)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
