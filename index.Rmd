@@ -14,7 +14,7 @@ For example, here is the table of contents for rendered versions of every R Mark
 ```{r echo=FALSE, results='asis'}
 rmd <- Sys.glob("*.Rmd")
 rmd <- rmd[rmd != "index.Rmd"]
-html <- sub(".Rmd", ".html", rmd)
+html <- sub(".Rmd", ".nb.html", rmd)
 lines <- lapply(rmd, readLines)
 yaml <- lapply(lines, rmarkdown:::parse_yaml_front_matter)
 cat("<ul>")
