@@ -1,6 +1,6 @@
 ---
-title: "Simple R Markdown Notebook"
-author: "Lincoln Mullen"
+title: "MBS MAC R Tutorials"
+author: "Paula Sáyago"
 ---
 
 ### What is this?
