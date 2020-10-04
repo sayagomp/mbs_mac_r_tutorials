@@ -177,15 +177,54 @@ studentInfo
 [back to top](#TOC)
 
 1) Create a list containing the objects grade 1, grade 2, and nationality (values from Part C) and set the names accordingly. Now, practice selecting elements.
+```{r}
+grade1 <- c(1.7,1.3,2.7,2.0)
+grade2 <- c(1.0,2.7,2.0,2.3)
+studentInfoList <- list(grade1,grade2,nationalitiesFactor)
+names(studentInfoList) <- c("Grade 1","Grade 2","Nationality")
+studentInfoList
+```
+
 a. Return all the grades achieved in class 2.
+```{r}
+studentInfoList$`Grade 2`
+```
+
 b. Return all the nationalities.
+```{r}
+studentInfoList$Nationality
+```
+
 c. Return the grades of the first two students in class 1.
+```{r}
+studentInfoList$`Grade 1`[1:2]
+```
+
 
 2) Create a data frame containing the variables age, grade 1, grade 2, grade point average, and nationality (values from Part C).
+```{r}
+ages <- c(25,27,24,27)
+studentInfoFrame <- data.frame(ages,studentInfoList$`Grade 1`,studentInfoList$`Grade 2`,gpa,nationalitiesFactor)
+colnames(studentInfoFrame) <- c("Age","Grade 1","Grade 1","GPA","Nationality")
+studentInfoFrame
+```
+
 a. Use `str()` and `summary()` to familiarize yourself with the data frame.
+```{r}
+str(studentInfoFrame)
+summary(studentInfoFrame)
+```
+
 b. Return only the entries for the first two students.
-c. Calculate the average age again, this time using “data frame notation”. Hint:
-use the function `mean()`.
+```{r}
+head(studentInfoFrame,2)
+```
+
+c. Calculate the average age again, this time using “data frame notation”. *Hint: use the function `mean()`.*
+```{r}
+mean(studentInfoFrame$Age)
+```
+
 
 
 
