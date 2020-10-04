@@ -1,9 +1,13 @@
 ---
-title: "MAC R Tutorial 1 Exercise"
-output: html_notebook
+title: "MAC R Tutorial 1 Exercise" 
+output:
+  html_notebook:
+   toc: true
+   toc_depth: 3
 ---
 
-### Part A: Basic Math ###
+### Part A: Basic Math ### 
+[back to top](#TOC)
 
 1) First, have a look at some other math operations in R. Calculate the following problems (and look at the help documentation for the necessary arguments).
 
@@ -35,9 +39,11 @@ totalItemsSold <- 500
 (totalRevenue <- salesPrice*totalItemsSold)
 ```
 
-### Part B: Different Data Types & Vectors ###
 
-1) Generate vectors containing the following number sequences using rep() and seq().
+### Part B: Different Data Types & Vectors ###
+[back to top](#TOC)
+
+1) Generate vectors containing the following number sequences using `rep()` and `seq()`.
 ```{r}
 #a
 rep(3:6, times=4)
@@ -55,8 +61,7 @@ seq(from=-2, to=2, length.out=50)
 
 2) Now, familiarize yourself with the different vector types in R.
 
-a. Create a vector containing the possible academic grades (1.0, 2.0, 3.0, 4.0,
-5.0), give the vector a meaningful name and check what type it is.
+a. Create a vector containing the possible academic grades (1.0, 2.0, 3.0, 4.0, 5.0), give the vector a meaningful name and check what type it is.
 ```{r}
 gradesNumerical <- c(1.0, 2.0, 3.0, 4.0, 5.0)
 typeof(gradesNumerical)
@@ -87,7 +92,7 @@ as.numeric(gradesLetter)
 as.logical(gradesLetter)
 ```
 
-d. Create a vector containing the elements (1, TRUE, 5). Then create a vector containing (1, TRUE, 5, “yes”). What happens and do you understand why?
+d. Create a vector containing the elements `(1, TRUE, 5)`. Then create a vector containing `(1, TRUE, 5, “yes”)`. What happens and do you understand why?
 
 ```{r}
 c(1, T, 5)
@@ -124,9 +129,11 @@ b. Following a new production process, the company’s costs are doubled, while 
 (profitNew <- prices-costs)
 ```
 
-### Part C: Factors & Matrix ###
 
-1) Create a matrix containing information on university students and their grades in two different classes using matrix(). Set the row and column names appropriately.
+### Part C: Factors & Matrix ###
+[back to top](#TOC)
+
+1) Create a matrix containing information on university students and their grades in two different classes using `matrix()`. Set the row and column names appropriately.
 
 ```{r}
 studentInfo <- matrix(c(25,27,24,27,1.7,1.3,2.7,2.0,1.0,2.7,2.0,2.3),nrow=4,ncol=3)
@@ -166,8 +173,19 @@ studentInfo
 ```
 
 
+### Part D: Lists & Data Frame ###
+[back to top](#TOC)
 
+1) Create a list containing the objects grade 1, grade 2, and nationality (values from Part C) and set the names accordingly. Now, practice selecting elements.
+a. Return all the grades achieved in class 2.
+b. Return all the nationalities.
+c. Return the grades of the first two students in class 1.
 
+2) Create a data frame containing the variables age, grade 1, grade 2, grade point average, and nationality (values from Part C).
+a. Use `str()` and `summary()` to familiarize yourself with the data frame.
+b. Return only the entries for the first two students.
+c. Calculate the average age again, this time using “data frame notation”. Hint:
+use the function `mean()`.
 
 
 
