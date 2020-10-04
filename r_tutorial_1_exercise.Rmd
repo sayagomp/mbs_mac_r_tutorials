@@ -124,6 +124,66 @@ b. Following a new production process, the company’s costs are doubled, while 
 (profitNew <- prices-costs)
 ```
 
+### Part C: Factors & Matrix ###
+
+1) Create a matrix containing information on university students and their grades in two different classes using matrix(). Set the row and column names appropriately.
+
+```{r}
+studentInfo <- matrix(c(25,27,24,27,1.7,1.3,2.7,2.0,1.0,2.7,2.0,2.3),nrow=4,ncol=3)
+colnames(studentInfo) <- c("Age","Grade 1","Grade 2")
+rownames(studentInfo) <- c("Student 1","Student 2","Student 3","Student 4")
+studentInfo
+```
+
+a. Calculate the average grade achieved in class 1, the average grade in class 2 and the average age of students.
+```{r}
+colMeans(studentInfo)
+```
+
+b. There is also information on the overall grade point average of students: 1.2 (student 1), 1.8 (student 2), 1.9 (student 3), 2.7 (student 4). Add the new information to the matrix and calculate the grade point average across all students.
+
+```{r}
+gpa <- c(1.2,1.8,1.9,2.7)
+studentInfo <- cbind(studentInfo,gpa)
+colnames(studentInfo) <- c("Age","Grade 1","Grade 2","GPA")
+studentInfo
+colMeans(studentInfo)
+```
+
+c. Return only the age and grade point average of student 1 and student 2.
+
+```{r}
+studentInfo[1:2,c(1,4)]
+```
+
+2) The nationality of the four students is also known: French (student 1), German (student 2), German (student 3), French (student 4). Store the new information as a factor and add it to the matrix.
+
+```{r}
+nationalitiesFactor <- factor(c("French","German","German","French"), levels=c("French","German"))
+studentInfo <- cbind(studentInfo,nationalitiesFactor)
+colnames(studentInfo) <- c(colnames(studentInfo)[1:4],"Nationality")
+studentInfo
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
