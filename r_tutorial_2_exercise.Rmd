@@ -1,0 +1,96 @@
+---
+title: "MAC R Tutorial 2 Exercise" 
+output:
+  html_notebook:
+   toc: true
+   toc_depth: 3
+---
+
+### Part A: Data Description and Manipulation
+[back to top](#TOC)
+
+1) The first exercise uses a fictional data set on music subscriptions1 (`music-data.csv`). More specifically, the data captures whether a respondent subscribes to a music service or not (`subscribeToMusic`). Various control variables, such as the age, gender, household income, miles driven, number of children in the household, and whether the respondent commutes to work by car are also included. Furthermore, respondents rate how enthusiastic they are about driving and music on a scale ranging from 1 to 7 (`drivingEnthuse`, `musicEnthuse`). Finally, different segments are used to categorize respondents.
+
+a. Load the .csv into R Studio and give the data set an appropriate name. Do this using the read.csv() function discussed in the tutorial. Alternatively, you can use “Import Dataset” in R Studio’s Environment. Select “From text (base)” and choose the file you wish to import.
+
+```{r}
+setwd("/Users/sayagomp/Documents/Mannheim\ MBA/MAC/r_tutorials")
+dir()
+musicData <- read.csv("music-data.csv",header = TRUE, sep = ",", dec = ".")
+```
+
+b. How many variables and observations are in the music subscription data set?
+```{r}
+dim(musicData) #1st is num of observations, 2nd is num of variables
+```
+c. Start with a general look at the variables in our data set. Use `summary()` to get some first statistics on all the included variables. Do you notice any seemingly unrealistic outliers/values or does the data seem reasonable?
+
+```{r}
+summary(musicData)
+```
+```
+Outliers: One household has 9 children. Unclear if outlier or data entry error.
+```
+d. Now, take a closer look at the age of those observed in our data. What is the age range of observations? Do the average and median differ? Finally, what is the standard deviation of age in the data set?
+
+```{r}
+range(musicData$age)
+mean(musicData$age)
+median(musicData$age)
+sd(musicData$age)
+```
+
+e. Do the same deep dive for household income. What do you observe?
+
+```{r}
+range(musicData$householdIncome)
+mean(musicData$householdIncome)
+median(musicData$householdIncome)
+sd(musicData$householdIncome)
+```
+```
+SD is quite high. Large spread.
+```
+
+f. The income variable captures the gross household income. However, what is the income each household actually has at its disposal? Assume there is a single tax rate of 30% for each household. Create a new variable in the data frame with an appropriate name containing the net household income.
+
+```{r}
+musicData$netHouseholdIncome <- musicData$householdIncome * 0.7
+```
+
+g. A radio station is considering running a targeted advertisement campaign for a sample of the 895 respondents. Create a new variable that randomly states whether the respondent is chosen for the campaign or not. *Hint: Think back to how we created factors in Session 1.*
+
+```{r}
+samplingFactor <- sample(gl(n=2,k=1,length=dim(musicData)[1],labels=c(F,T)))
+musicData$inSample <- samplingFactor
+```
+
+2) The second exercise uses a data set on fictional weekly product sales1 (`store-data.csv`). More specifically, the data captures the price (`p1price`, `p2price`) and quantity (`p1sales`, `p2sales`) sold of 2 products, as well as whether a specific promotion (`p1prom`, `p2prom`) took place. The data set includes a numeric store ID (`storeNum`), as well as the country it is found in (`country`) and the year (`Year`) and week (`Week`) of each observation.
+
+a. Load the .csv into R Studio and give the data set an appropriate name.
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
