@@ -1913,12 +1913,110 @@ musicData$inSample &lt;- samplingFactor</code></pre>
 </ol>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RvcmVEYXRhIDwtIHJlYWQuY3N2KFwic3RvcmUtZGF0YS5jc3ZcIixoZWFkZXIgPSBUUlVFLCBzZXAgPSBcIixcIiwgZGVjID0gXCIuXCIpXG5gYGAifQ== -->
+<pre class="r"><code>storeData &lt;- read.csv(&quot;store-data.csv&quot;,header = TRUE, sep = &quot;,&quot;, dec = &quot;.&quot;)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<ol start="2" style="list-style-type: lower-alpha">
+<li>How many variables and observations are in the sales data set?</li>
+</ol>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGltKHN0b3JlRGF0YSkgIzFzdCBpcyBudW0gb2Ygb2JzZXJ2YXRpb25zLCAybmQgaXMgbnVtIG9mIHZhcmlhYmxlc1xuYGBgIn0= -->
+<pre class="r"><code>dim(storeData) #1st is num of observations, 2nd is num of variables</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIwODAgICAxMFxuIn0= -->
+<pre><code>[1] 2080   10</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Again, take a general look at the variables in the data set. What does a first glance indicate about the observed values, does the data seem reasonable?</li>
+</ol>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShzdG9yZURhdGEpXG5gYGAifQ== -->
+<pre class="r"><code>summary(storeData)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgIHN0b3JlTnVtICAgICAgICAgIFllYXIgICAgICAgICAgV2VlayAgICAgICAgICBwMXNhbGVzICAgICAgIHAyc2FsZXMgICAgICAgICBwMXByaWNlICAgICBcbiBNaW4uICAgOjEwMS4wICAgTWluLiAgIDoxLjAgICBNaW4uICAgOiAxLjAwICAgTWluLiAgIDogNzMgICBNaW4uICAgOiA1MS4wICAgTWluLiAgIDoyLjE5MCAgXG4gMXN0IFF1LjoxMDUuOCAgIDFzdCBRdS46MS4wICAgMXN0IFF1LjoxMy43NSAgIDFzdCBRdS46MTEzICAgMXN0IFF1LjogODQuMCAgIDFzdCBRdS46Mi4yOTAgIFxuIE1lZGlhbiA6MTEwLjUgICBNZWRpYW4gOjEuNSAgIE1lZGlhbiA6MjYuNTAgICBNZWRpYW4gOjEyOSAgIE1lZGlhbiA6IDk2LjAgICBNZWRpYW4gOjIuNDkwICBcbiBNZWFuICAgOjExMC41ICAgTWVhbiAgIDoxLjUgICBNZWFuICAgOjI2LjUwICAgTWVhbiAgIDoxMzMgICBNZWFuICAgOjEwMC4yICAgTWVhbiAgIDoyLjU0NCAgXG4gM3JkIFF1LjoxMTUuMiAgIDNyZCBRdS46Mi4wICAgM3JkIFF1LjozOS4yNSAgIDNyZCBRdS46MTUwICAgM3JkIFF1LjoxMTMuMCAgIDNyZCBRdS46Mi43OTAgIFxuIE1heC4gICA6MTIwLjAgICBNYXguICAgOjIuMCAgIE1heC4gICA6NTIuMDAgICBNYXguICAgOjI2MyAgIE1heC4gICA6MjI1LjAgICBNYXguICAgOjIuOTkwICBcbiAgICBwMnByaWNlICAgICAgICAgcDFwcm9tICAgICAgICBwMnByb20gICAgICAgICBjb3VudHJ5ICAgICAgICAgXG4gTWluLiAgIDoyLjI5ICAgTWluLiAgIDowLjAgICBNaW4uICAgOjAuMDAwMCAgIExlbmd0aDoyMDgwICAgICAgIFxuIDFzdCBRdS46Mi40OSAgIDFzdCBRdS46MC4wICAgMXN0IFF1LjowLjAwMDAgICBDbGFzcyA6Y2hhcmFjdGVyICBcbiBNZWRpYW4gOjIuNTkgICBNZWRpYW4gOjAuMCAgIE1lZGlhbiA6MC4wMDAwICAgTW9kZSAgOmNoYXJhY3RlciAgXG4gTWVhbiAgIDoyLjcwICAgTWVhbiAgIDowLjEgICBNZWFuICAgOjAuMTM4NSAgICAgICAgICAgICAgICAgICAgIFxuIDNyZCBRdS46Mi45OSAgIDNyZCBRdS46MC4wICAgM3JkIFF1LjowLjAwMDAgICAgICAgICAgICAgICAgICAgICBcbiBNYXguICAgOjMuMTkgICBNYXguICAgOjEuMCAgIE1heC4gICA6MS4wMDAwICAgICAgICAgICAgICAgICAgICAgXG4ifQ== -->
+<pre><code>    storeNum          Year          Week          p1sales       p2sales         p1price     
+ Min.   :101.0   Min.   :1.0   Min.   : 1.00   Min.   : 73   Min.   : 51.0   Min.   :2.190  
+ 1st Qu.:105.8   1st Qu.:1.0   1st Qu.:13.75   1st Qu.:113   1st Qu.: 84.0   1st Qu.:2.290  
+ Median :110.5   Median :1.5   Median :26.50   Median :129   Median : 96.0   Median :2.490  
+ Mean   :110.5   Mean   :1.5   Mean   :26.50   Mean   :133   Mean   :100.2   Mean   :2.544  
+ 3rd Qu.:115.2   3rd Qu.:2.0   3rd Qu.:39.25   3rd Qu.:150   3rd Qu.:113.0   3rd Qu.:2.790  
+ Max.   :120.0   Max.   :2.0   Max.   :52.00   Max.   :263   Max.   :225.0   Max.   :2.990  
+    p2price         p1prom        p2prom         country         
+ Min.   :2.29   Min.   :0.0   Min.   :0.0000   Length:2080       
+ 1st Qu.:2.49   1st Qu.:0.0   1st Qu.:0.0000   Class :character  
+ Median :2.59   Median :0.0   Median :0.0000   Mode  :character  
+ Mean   :2.70   Mean   :0.1   Mean   :0.1385                     
+ 3rd Qu.:2.99   3rd Qu.:0.0   3rd Qu.:0.0000                     
+ Max.   :3.19   Max.   :1.0   Max.   :1.0000                     </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<pre><code>Data taken over two years. Looks reasonable.</code></pre>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Compute a frequency table for the country of origin of stores. After Germany (DE), what country has the most observations? What country has the fewest observations?</li>
+</ol>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGFibGUoc3RvcmVEYXRhJGNvdW50cnkpXG5gYGAifQ== -->
+<pre class="r"><code>table(storeData$country)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG4gQVUgIEJSICBDTiAgREUgIEdCICBKUCAgVVMgXG4xMDQgMjA4IDIwOCA1MjAgMzEyIDQxNiAzMTIgXG4ifQ== -->
+<pre><code>
+ AU  BR  CN  DE  GB  JP  US 
+104 208 208 520 312 416 312 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<pre><code>Most: JP. Least: AU.</code></pre>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Now, take a closer look at product sales. Compute the average quantity sold of each product, as well as the 25%, 50% and 75% quantile.</li>
+</ol>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbihzdG9yZURhdGEkcDFzYWxlcylcbmBgYCJ9 -->
+<pre class="r"><code>mean(storeData$p1sales)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEzMy4wNDg2XG4ifQ== -->
+<pre><code>[1] 133.0486</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucXVhbnRpbGUoc3RvcmVEYXRhJHAxc2FsZXMpXG5gYGAifQ== -->
+<pre class="r"><code>quantile(storeData$p1sales)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAwJSAgMjUlICA1MCUgIDc1JSAxMDAlIFxuICA3MyAgMTEzICAxMjkgIDE1MCAgMjYzIFxuIn0= -->
+<pre><code>  0%  25%  50%  75% 100% 
+  73  113  129  150  263 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbihzdG9yZURhdGEkcDJzYWxlcylcbmBgYCJ9 -->
+<pre class="r"><code>mean(storeData$p2sales)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEwMC4xNTY3XG4ifQ== -->
+<pre><code>[1] 100.1567</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucXVhbnRpbGUoc3RvcmVEYXRhJHAyc2FsZXMpXG5gYGAifQ== -->
+<pre class="r"><code>quantile(storeData$p2sales)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAwJSAgMjUlICA1MCUgIDc1JSAxMDAlIFxuICA1MSAgIDg0ICAgOTYgIDExMyAgMjI1IFxuIn0= -->
+<pre><code>  0%  25%  50%  75% 100% 
+  51   84   96  113  225 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<ol start="3" style="list-style-type: decimal">
+<li>Using the same weekly product sales data, examine the relationship between the two products themselves.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>First, calculate the correlation between the price and quantity sold for each product. Does this seem reasonable?</li>
+</ol>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiTUFDIFIgVHV0b3JpYWwgMiBFeGVyY2lzZSIgCm91dHB1dDoKICBodG1sX25vdGVib29rOgogICB0b2M6IHRydWUKICAgdG9jX2RlcHRoOiAzCi0tLQoKIyMjIFBhcnQgQTogRGF0YSBEZXNjcmlwdGlvbiBhbmQgTWFuaXB1bGF0aW9uCltiYWNrIHRvIHRvcF0oI1RPQykKCjEpIFRoZSBmaXJzdCBleGVyY2lzZSB1c2VzIGEgZmljdGlvbmFsIGRhdGEgc2V0IG9uIG11c2ljIHN1YnNjcmlwdGlvbnMxIChgbXVzaWMtZGF0YS5jc3ZgKS4gTW9yZSBzcGVjaWZpY2FsbHksIHRoZSBkYXRhIGNhcHR1cmVzIHdoZXRoZXIgYSByZXNwb25kZW50IHN1YnNjcmliZXMgdG8gYSBtdXNpYyBzZXJ2aWNlIG9yIG5vdCAoYHN1YnNjcmliZVRvTXVzaWNgKS4gVmFyaW91cyBjb250cm9sIHZhcmlhYmxlcywgc3VjaCBhcyB0aGUgYWdlLCBnZW5kZXIsIGhvdXNlaG9sZCBpbmNvbWUsIG1pbGVzIGRyaXZlbiwgbnVtYmVyIG9mIGNoaWxkcmVuIGluIHRoZSBob3VzZWhvbGQsIGFuZCB3aGV0aGVyIHRoZSByZXNwb25kZW50IGNvbW11dGVzIHRvIHdvcmsgYnkgY2FyIGFyZSBhbHNvIGluY2x1ZGVkLiBGdXJ0aGVybW9yZSwgcmVzcG9uZGVudHMgcmF0ZSBob3cgZW50aHVzaWFzdGljIHRoZXkgYXJlIGFib3V0IGRyaXZpbmcgYW5kIG11c2ljIG9uIGEgc2NhbGUgcmFuZ2luZyBmcm9tIDEgdG8gNyAoYGRyaXZpbmdFbnRodXNlYCwgYG11c2ljRW50aHVzZWApLiBGaW5hbGx5LCBkaWZmZXJlbnQgc2VnbWVudHMgYXJlIHVzZWQgdG8gY2F0ZWdvcml6ZSByZXNwb25kZW50cy4KCmEuIExvYWQgdGhlIC5jc3YgaW50byBSIFN0dWRpbyBhbmQgZ2l2ZSB0aGUgZGF0YSBzZXQgYW4gYXBwcm9wcmlhdGUgbmFtZS4gRG8gdGhpcyB1c2luZyB0aGUgcmVhZC5jc3YoKSBmdW5jdGlvbiBkaXNjdXNzZWQgaW4gdGhlIHR1dG9yaWFsLiBBbHRlcm5hdGl2ZWx5LCB5b3UgY2FuIHVzZSDigJxJbXBvcnQgRGF0YXNldOKAnSBpbiBSIFN0dWRpb+KAmXMgRW52aXJvbm1lbnQuIFNlbGVjdCDigJxGcm9tIHRleHQgKGJhc2Up4oCdIGFuZCBjaG9vc2UgdGhlIGZpbGUgeW91IHdpc2ggdG8gaW1wb3J0LgoKYGBge3J9CnNldHdkKCIvVXNlcnMvc2F5YWdvbXAvRG9jdW1lbnRzL01hbm5oZWltXCBNQkEvTUFDL3JfdHV0b3JpYWxzIikKZGlyKCkKbXVzaWNEYXRhIDwtIHJlYWQuY3N2KCJtdXNpYy1kYXRhLmNzdiIsaGVhZGVyID0gVFJVRSwgc2VwID0gIiwiLCBkZWMgPSAiLiIpCmBgYAoKYi4gSG93IG1hbnkgdmFyaWFibGVzIGFuZCBvYnNlcnZhdGlvbnMgYXJlIGluIHRoZSBtdXNpYyBzdWJzY3JpcHRpb24gZGF0YSBzZXQ/CmBgYHtyfQpkaW0obXVzaWNEYXRhKSAjMXN0IGlzIG51bSBvZiBvYnNlcnZhdGlvbnMsIDJuZCBpcyBudW0gb2YgdmFyaWFibGVzCmBgYApjLiBTdGFydCB3aXRoIGEgZ2VuZXJhbCBsb29rIGF0IHRoZSB2YXJpYWJsZXMgaW4gb3VyIGRhdGEgc2V0LiBVc2UgYHN1bW1hcnkoKWAgdG8gZ2V0IHNvbWUgZmlyc3Qgc3RhdGlzdGljcyBvbiBhbGwgdGhlIGluY2x1ZGVkIHZhcmlhYmxlcy4gRG8geW91IG5vdGljZSBhbnkgc2VlbWluZ2x5IHVucmVhbGlzdGljIG91dGxpZXJzL3ZhbHVlcyBvciBkb2VzIHRoZSBkYXRhIHNlZW0gcmVhc29uYWJsZT8KCmBgYHtyfQpzdW1tYXJ5KG11c2ljRGF0YSkKYGBgCmBgYApPdXRsaWVyczogT25lIGhvdXNlaG9sZCBoYXMgOSBjaGlsZHJlbi4gVW5jbGVhciBpZiBvdXRsaWVyIG9yIGRhdGEgZW50cnkgZXJyb3IuCmBgYApkLiBOb3csIHRha2UgYSBjbG9zZXIgbG9vayBhdCB0aGUgYWdlIG9mIHRob3NlIG9ic2VydmVkIGluIG91ciBkYXRhLiBXaGF0IGlzIHRoZSBhZ2UgcmFuZ2Ugb2Ygb2JzZXJ2YXRpb25zPyBEbyB0aGUgYXZlcmFnZSBhbmQgbWVkaWFuIGRpZmZlcj8gRmluYWxseSwgd2hhdCBpcyB0aGUgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIGFnZSBpbiB0aGUgZGF0YSBzZXQ/CgpgYGB7cn0KcmFuZ2UobXVzaWNEYXRhJGFnZSkKbWVhbihtdXNpY0RhdGEkYWdlKQptZWRpYW4obXVzaWNEYXRhJGFnZSkKc2QobXVzaWNEYXRhJGFnZSkKYGBgCgplLiBEbyB0aGUgc2FtZSBkZWVwIGRpdmUgZm9yIGhvdXNlaG9sZCBpbmNvbWUuIFdoYXQgZG8geW91IG9ic2VydmU/CgpgYGB7cn0KcmFuZ2UobXVzaWNEYXRhJGhvdXNlaG9sZEluY29tZSkKbWVhbihtdXNpY0RhdGEkaG91c2Vob2xkSW5jb21lKQptZWRpYW4obXVzaWNEYXRhJGhvdXNlaG9sZEluY29tZSkKc2QobXVzaWNEYXRhJGhvdXNlaG9sZEluY29tZSkKYGBgCmBgYApTRCBpcyBxdWl0ZSBoaWdoLiBMYXJnZSBzcHJlYWQuCmBgYAoKZi4gVGhlIGluY29tZSB2YXJpYWJsZSBjYXB0dXJlcyB0aGUgZ3Jvc3MgaG91c2Vob2xkIGluY29tZS4gSG93ZXZlciwgd2hhdCBpcyB0aGUgaW5jb21lIGVhY2ggaG91c2Vob2xkIGFjdHVhbGx5IGhhcyBhdCBpdHMgZGlzcG9zYWw/IEFzc3VtZSB0aGVyZSBpcyBhIHNpbmdsZSB0YXggcmF0ZSBvZiAzMCUgZm9yIGVhY2ggaG91c2Vob2xkLiBDcmVhdGUgYSBuZXcgdmFyaWFibGUgaW4gdGhlIGRhdGEgZnJhbWUgd2l0aCBhbiBhcHByb3ByaWF0ZSBuYW1lIGNvbnRhaW5pbmcgdGhlIG5ldCBob3VzZWhvbGQgaW5jb21lLgoKYGBge3J9Cm11c2ljRGF0YSRuZXRIb3VzZWhvbGRJbmNvbWUgPC0gbXVzaWNEYXRhJGhvdXNlaG9sZEluY29tZSAqIDAuNwpgYGAKCmcuIEEgcmFkaW8gc3RhdGlvbiBpcyBjb25zaWRlcmluZyBydW5uaW5nIGEgdGFyZ2V0ZWQgYWR2ZXJ0aXNlbWVudCBjYW1wYWlnbiBmb3IgYSBzYW1wbGUgb2YgdGhlIDg5NSByZXNwb25kZW50cy4gQ3JlYXRlIGEgbmV3IHZhcmlhYmxlIHRoYXQgcmFuZG9tbHkgc3RhdGVzIHdoZXRoZXIgdGhlIHJlc3BvbmRlbnQgaXMgY2hvc2VuIGZvciB0aGUgY2FtcGFpZ24gb3Igbm90LiAqSGludDogVGhpbmsgYmFjayB0byBob3cgd2UgY3JlYXRlZCBmYWN0b3JzIGluIFNlc3Npb24gMS4qCgpgYGB7cn0Kc2FtcGxpbmdGYWN0b3IgPC0gc2FtcGxlKGdsKG49MixrPTEsbGVuZ3RoPWRpbShtdXNpY0RhdGEpWzFdLGxhYmVscz1jKEYsVCkpKQptdXNpY0RhdGEkaW5TYW1wbGUgPC0gc2FtcGxpbmdGYWN0b3IKYGBgCgoyKSBUaGUgc2Vjb25kIGV4ZXJjaXNlIHVzZXMgYSBkYXRhIHNldCBvbiBmaWN0aW9uYWwgd2Vla2x5IHByb2R1Y3Qgc2FsZXMxIChgc3RvcmUtZGF0YS5jc3ZgKS4gTW9yZSBzcGVjaWZpY2FsbHksIHRoZSBkYXRhIGNhcHR1cmVzIHRoZSBwcmljZSAoYHAxcHJpY2VgLCBgcDJwcmljZWApIGFuZCBxdWFudGl0eSAoYHAxc2FsZXNgLCBgcDJzYWxlc2ApIHNvbGQgb2YgMiBwcm9kdWN0cywgYXMgd2VsbCBhcyB3aGV0aGVyIGEgc3BlY2lmaWMgcHJvbW90aW9uIChgcDFwcm9tYCwgYHAycHJvbWApIHRvb2sgcGxhY2UuIFRoZSBkYXRhIHNldCBpbmNsdWRlcyBhIG51bWVyaWMgc3RvcmUgSUQgKGBzdG9yZU51bWApLCBhcyB3ZWxsIGFzIHRoZSBjb3VudHJ5IGl0IGlzIGZvdW5kIGluIChgY291bnRyeWApIGFuZCB0aGUgeWVhciAoYFllYXJgKSBhbmQgd2VlayAoYFdlZWtgKSBvZiBlYWNoIG9ic2VydmF0aW9uLgoKYS4gTG9hZCB0aGUgLmNzdiBpbnRvIFIgU3R1ZGlvIGFuZCBnaXZlIHRoZSBkYXRhIHNldCBhbiBhcHByb3ByaWF0ZSBuYW1lLgpgYGB7cn0KCmBgYAoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiTUFDIFIgVHV0b3JpYWwgMiBFeGVyY2lzZSIgCm91dHB1dDoKICBodG1sX25vdGVib29rOgogICB0b2M6IHRydWUKICAgdG9jX2RlcHRoOiAzCi0tLQoKIyMjIFBhcnQgQTogRGF0YSBEZXNjcmlwdGlvbiBhbmQgTWFuaXB1bGF0aW9uCltiYWNrIHRvIHRvcF0oI1RPQykKCjEpIFRoZSBmaXJzdCBleGVyY2lzZSB1c2VzIGEgZmljdGlvbmFsIGRhdGEgc2V0IG9uIG11c2ljIHN1YnNjcmlwdGlvbnMxIChgbXVzaWMtZGF0YS5jc3ZgKS4gTW9yZSBzcGVjaWZpY2FsbHksIHRoZSBkYXRhIGNhcHR1cmVzIHdoZXRoZXIgYSByZXNwb25kZW50IHN1YnNjcmliZXMgdG8gYSBtdXNpYyBzZXJ2aWNlIG9yIG5vdCAoYHN1YnNjcmliZVRvTXVzaWNgKS4gVmFyaW91cyBjb250cm9sIHZhcmlhYmxlcywgc3VjaCBhcyB0aGUgYWdlLCBnZW5kZXIsIGhvdXNlaG9sZCBpbmNvbWUsIG1pbGVzIGRyaXZlbiwgbnVtYmVyIG9mIGNoaWxkcmVuIGluIHRoZSBob3VzZWhvbGQsIGFuZCB3aGV0aGVyIHRoZSByZXNwb25kZW50IGNvbW11dGVzIHRvIHdvcmsgYnkgY2FyIGFyZSBhbHNvIGluY2x1ZGVkLiBGdXJ0aGVybW9yZSwgcmVzcG9uZGVudHMgcmF0ZSBob3cgZW50aHVzaWFzdGljIHRoZXkgYXJlIGFib3V0IGRyaXZpbmcgYW5kIG11c2ljIG9uIGEgc2NhbGUgcmFuZ2luZyBmcm9tIDEgdG8gNyAoYGRyaXZpbmdFbnRodXNlYCwgYG11c2ljRW50aHVzZWApLiBGaW5hbGx5LCBkaWZmZXJlbnQgc2VnbWVudHMgYXJlIHVzZWQgdG8gY2F0ZWdvcml6ZSByZXNwb25kZW50cy4KCmEuIExvYWQgdGhlIC5jc3YgaW50byBSIFN0dWRpbyBhbmQgZ2l2ZSB0aGUgZGF0YSBzZXQgYW4gYXBwcm9wcmlhdGUgbmFtZS4gRG8gdGhpcyB1c2luZyB0aGUgcmVhZC5jc3YoKSBmdW5jdGlvbiBkaXNjdXNzZWQgaW4gdGhlIHR1dG9yaWFsLiBBbHRlcm5hdGl2ZWx5LCB5b3UgY2FuIHVzZSDigJxJbXBvcnQgRGF0YXNldOKAnSBpbiBSIFN0dWRpb+KAmXMgRW52aXJvbm1lbnQuIFNlbGVjdCDigJxGcm9tIHRleHQgKGJhc2Up4oCdIGFuZCBjaG9vc2UgdGhlIGZpbGUgeW91IHdpc2ggdG8gaW1wb3J0LgoKYGBge3J9CnNldHdkKCIvVXNlcnMvc2F5YWdvbXAvRG9jdW1lbnRzL01hbm5oZWltXCBNQkEvTUFDL3JfdHV0b3JpYWxzIikKZGlyKCkKbXVzaWNEYXRhIDwtIHJlYWQuY3N2KCJtdXNpYy1kYXRhLmNzdiIsaGVhZGVyID0gVFJVRSwgc2VwID0gIiwiLCBkZWMgPSAiLiIpCmBgYAoKYi4gSG93IG1hbnkgdmFyaWFibGVzIGFuZCBvYnNlcnZhdGlvbnMgYXJlIGluIHRoZSBtdXNpYyBzdWJzY3JpcHRpb24gZGF0YSBzZXQ/CmBgYHtyfQpkaW0obXVzaWNEYXRhKSAjMXN0IGlzIG51bSBvZiBvYnNlcnZhdGlvbnMsIDJuZCBpcyBudW0gb2YgdmFyaWFibGVzCmBgYApjLiBTdGFydCB3aXRoIGEgZ2VuZXJhbCBsb29rIGF0IHRoZSB2YXJpYWJsZXMgaW4gb3VyIGRhdGEgc2V0LiBVc2UgYHN1bW1hcnkoKWAgdG8gZ2V0IHNvbWUgZmlyc3Qgc3RhdGlzdGljcyBvbiBhbGwgdGhlIGluY2x1ZGVkIHZhcmlhYmxlcy4gRG8geW91IG5vdGljZSBhbnkgc2VlbWluZ2x5IHVucmVhbGlzdGljIG91dGxpZXJzL3ZhbHVlcyBvciBkb2VzIHRoZSBkYXRhIHNlZW0gcmVhc29uYWJsZT8KCmBgYHtyfQpzdW1tYXJ5KG11c2ljRGF0YSkKYGBgCmBgYApPdXRsaWVyczogT25lIGhvdXNlaG9sZCBoYXMgOSBjaGlsZHJlbi4gVW5jbGVhciBpZiBvdXRsaWVyIG9yIGRhdGEgZW50cnkgZXJyb3IuCmBgYApkLiBOb3csIHRha2UgYSBjbG9zZXIgbG9vayBhdCB0aGUgYWdlIG9mIHRob3NlIG9ic2VydmVkIGluIG91ciBkYXRhLiBXaGF0IGlzIHRoZSBhZ2UgcmFuZ2Ugb2Ygb2JzZXJ2YXRpb25zPyBEbyB0aGUgYXZlcmFnZSBhbmQgbWVkaWFuIGRpZmZlcj8gRmluYWxseSwgd2hhdCBpcyB0aGUgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIGFnZSBpbiB0aGUgZGF0YSBzZXQ/CgpgYGB7cn0KcmFuZ2UobXVzaWNEYXRhJGFnZSkKbWVhbihtdXNpY0RhdGEkYWdlKQptZWRpYW4obXVzaWNEYXRhJGFnZSkKc2QobXVzaWNEYXRhJGFnZSkKYGBgCgplLiBEbyB0aGUgc2FtZSBkZWVwIGRpdmUgZm9yIGhvdXNlaG9sZCBpbmNvbWUuIFdoYXQgZG8geW91IG9ic2VydmU/CgpgYGB7cn0KcmFuZ2UobXVzaWNEYXRhJGhvdXNlaG9sZEluY29tZSkKbWVhbihtdXNpY0RhdGEkaG91c2Vob2xkSW5jb21lKQptZWRpYW4obXVzaWNEYXRhJGhvdXNlaG9sZEluY29tZSkKc2QobXVzaWNEYXRhJGhvdXNlaG9sZEluY29tZSkKYGBgCmBgYApTRCBpcyBxdWl0ZSBoaWdoLiBMYXJnZSBzcHJlYWQuCmBgYAoKZi4gVGhlIGluY29tZSB2YXJpYWJsZSBjYXB0dXJlcyB0aGUgZ3Jvc3MgaG91c2Vob2xkIGluY29tZS4gSG93ZXZlciwgd2hhdCBpcyB0aGUgaW5jb21lIGVhY2ggaG91c2Vob2xkIGFjdHVhbGx5IGhhcyBhdCBpdHMgZGlzcG9zYWw/IEFzc3VtZSB0aGVyZSBpcyBhIHNpbmdsZSB0YXggcmF0ZSBvZiAzMCUgZm9yIGVhY2ggaG91c2Vob2xkLiBDcmVhdGUgYSBuZXcgdmFyaWFibGUgaW4gdGhlIGRhdGEgZnJhbWUgd2l0aCBhbiBhcHByb3ByaWF0ZSBuYW1lIGNvbnRhaW5pbmcgdGhlIG5ldCBob3VzZWhvbGQgaW5jb21lLgoKYGBge3J9Cm11c2ljRGF0YSRuZXRIb3VzZWhvbGRJbmNvbWUgPC0gbXVzaWNEYXRhJGhvdXNlaG9sZEluY29tZSAqIDAuNwpgYGAKCmcuIEEgcmFkaW8gc3RhdGlvbiBpcyBjb25zaWRlcmluZyBydW5uaW5nIGEgdGFyZ2V0ZWQgYWR2ZXJ0aXNlbWVudCBjYW1wYWlnbiBmb3IgYSBzYW1wbGUgb2YgdGhlIDg5NSByZXNwb25kZW50cy4gQ3JlYXRlIGEgbmV3IHZhcmlhYmxlIHRoYXQgcmFuZG9tbHkgc3RhdGVzIHdoZXRoZXIgdGhlIHJlc3BvbmRlbnQgaXMgY2hvc2VuIGZvciB0aGUgY2FtcGFpZ24gb3Igbm90LiAqSGludDogVGhpbmsgYmFjayB0byBob3cgd2UgY3JlYXRlZCBmYWN0b3JzIGluIFNlc3Npb24gMS4qCgpgYGB7cn0Kc2FtcGxpbmdGYWN0b3IgPC0gc2FtcGxlKGdsKG49MixrPTEsbGVuZ3RoPWRpbShtdXNpY0RhdGEpWzFdLGxhYmVscz1jKEYsVCkpKQptdXNpY0RhdGEkaW5TYW1wbGUgPC0gc2FtcGxpbmdGYWN0b3IKYGBgCgoyKSBUaGUgc2Vjb25kIGV4ZXJjaXNlIHVzZXMgYSBkYXRhIHNldCBvbiBmaWN0aW9uYWwgd2Vla2x5IHByb2R1Y3Qgc2FsZXMxIChgc3RvcmUtZGF0YS5jc3ZgKS4gTW9yZSBzcGVjaWZpY2FsbHksIHRoZSBkYXRhIGNhcHR1cmVzIHRoZSBwcmljZSAoYHAxcHJpY2VgLCBgcDJwcmljZWApIGFuZCBxdWFudGl0eSAoYHAxc2FsZXNgLCBgcDJzYWxlc2ApIHNvbGQgb2YgMiBwcm9kdWN0cywgYXMgd2VsbCBhcyB3aGV0aGVyIGEgc3BlY2lmaWMgcHJvbW90aW9uIChgcDFwcm9tYCwgYHAycHJvbWApIHRvb2sgcGxhY2UuIFRoZSBkYXRhIHNldCBpbmNsdWRlcyBhIG51bWVyaWMgc3RvcmUgSUQgKGBzdG9yZU51bWApLCBhcyB3ZWxsIGFzIHRoZSBjb3VudHJ5IGl0IGlzIGZvdW5kIGluIChgY291bnRyeWApIGFuZCB0aGUgeWVhciAoYFllYXJgKSBhbmQgd2VlayAoYFdlZWtgKSBvZiBlYWNoIG9ic2VydmF0aW9uLgoKYS4gTG9hZCB0aGUgLmNzdiBpbnRvIFIgU3R1ZGlvIGFuZCBnaXZlIHRoZSBkYXRhIHNldCBhbiBhcHByb3ByaWF0ZSBuYW1lLgpgYGB7cn0Kc3RvcmVEYXRhIDwtIHJlYWQuY3N2KCJzdG9yZS1kYXRhLmNzdiIsaGVhZGVyID0gVFJVRSwgc2VwID0gIiwiLCBkZWMgPSAiLiIpCmBgYAoKYi4gSG93IG1hbnkgdmFyaWFibGVzIGFuZCBvYnNlcnZhdGlvbnMgYXJlIGluIHRoZSBzYWxlcyBkYXRhIHNldD8KCmBgYHtyfQpkaW0oc3RvcmVEYXRhKSAjMXN0IGlzIG51bSBvZiBvYnNlcnZhdGlvbnMsIDJuZCBpcyBudW0gb2YgdmFyaWFibGVzCmBgYAoKYy4gQWdhaW4sIHRha2UgYSBnZW5lcmFsIGxvb2sgYXQgdGhlIHZhcmlhYmxlcyBpbiB0aGUgZGF0YSBzZXQuIFdoYXQgZG9lcyBhIGZpcnN0IGdsYW5jZSBpbmRpY2F0ZSBhYm91dCB0aGUgb2JzZXJ2ZWQgdmFsdWVzLCBkb2VzIHRoZSBkYXRhIHNlZW0gcmVhc29uYWJsZT8KCmBgYHtyfQpzdW1tYXJ5KHN0b3JlRGF0YSkKYGBgCmBgYApEYXRhIHRha2VuIG92ZXIgdHdvIHllYXJzLiBMb29rcyByZWFzb25hYmxlLgpgYGAKCmQuIENvbXB1dGUgYSBmcmVxdWVuY3kgdGFibGUgZm9yIHRoZSBjb3VudHJ5IG9mIG9yaWdpbiBvZiBzdG9yZXMuIEFmdGVyIEdlcm1hbnkgKERFKSwgd2hhdCBjb3VudHJ5IGhhcyB0aGUgbW9zdCBvYnNlcnZhdGlvbnM/IFdoYXQgY291bnRyeSBoYXMgdGhlIGZld2VzdCBvYnNlcnZhdGlvbnM/CgpgYGB7cn0KdGFibGUoc3RvcmVEYXRhJGNvdW50cnkpCmBgYApgYGAKTW9zdDogSlAuIExlYXN0OiBBVS4KYGBgCgplLiBOb3csIHRha2UgYSBjbG9zZXIgbG9vayBhdCBwcm9kdWN0IHNhbGVzLiBDb21wdXRlIHRoZSBhdmVyYWdlIHF1YW50aXR5IHNvbGQgb2YgZWFjaCBwcm9kdWN0LCBhcyB3ZWxsIGFzIHRoZSAyNSUsIDUwJSBhbmQgNzUlIHF1YW50aWxlLgoKYGBge3J9Cm1lYW4oc3RvcmVEYXRhJHAxc2FsZXMpCnF1YW50aWxlKHN0b3JlRGF0YSRwMXNhbGVzKQptZWFuKHN0b3JlRGF0YSRwMnNhbGVzKQpxdWFudGlsZShzdG9yZURhdGEkcDJzYWxlcykKYGBgCgoKMykgVXNpbmcgdGhlIHNhbWUgd2Vla2x5IHByb2R1Y3Qgc2FsZXMgZGF0YSwgZXhhbWluZSB0aGUgcmVsYXRpb25zaGlwIGJldHdlZW4gdGhlIHR3byBwcm9kdWN0cyB0aGVtc2VsdmVzLgoKYS4gRmlyc3QsIGNhbGN1bGF0ZSB0aGUgY29ycmVsYXRpb24gYmV0d2VlbiB0aGUgcHJpY2UgYW5kIHF1YW50aXR5IHNvbGQgZm9yIGVhY2ggcHJvZHVjdC4gRG9lcyB0aGlzIHNlZW0gcmVhc29uYWJsZT8KCgoKCgoKCgoKCgoKCg==</div>
 
 
 

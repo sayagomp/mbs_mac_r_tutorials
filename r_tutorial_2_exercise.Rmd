@@ -69,18 +69,46 @@ musicData$inSample <- samplingFactor
 
 a. Load the .csv into R Studio and give the data set an appropriate name.
 ```{r}
+storeData <- read.csv("store-data.csv",header = TRUE, sep = ",", dec = ".")
+```
 
+b. How many variables and observations are in the sales data set?
+
+```{r}
+dim(storeData) #1st is num of observations, 2nd is num of variables
+```
+
+c. Again, take a general look at the variables in the data set. What does a first glance indicate about the observed values, does the data seem reasonable?
+
+```{r}
+summary(storeData)
+```
+```
+Data taken over two years. Looks reasonable.
+```
+
+d. Compute a frequency table for the country of origin of stores. After Germany (DE), what country has the most observations? What country has the fewest observations?
+
+```{r}
+table(storeData$country)
+```
+```
+Most: JP. Least: AU.
+```
+
+e. Now, take a closer look at product sales. Compute the average quantity sold of each product, as well as the 25%, 50% and 75% quantile.
+
+```{r}
+mean(storeData$p1sales)
+quantile(storeData$p1sales)
+mean(storeData$p2sales)
+quantile(storeData$p2sales)
 ```
 
 
+3) Using the same weekly product sales data, examine the relationship between the two products themselves.
 
-
-
-
-
-
-
-
+a. First, calculate the correlation between the price and quantity sold for each product. Does this seem reasonable?
 
 
 
